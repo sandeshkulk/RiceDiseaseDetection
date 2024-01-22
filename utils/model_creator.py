@@ -1,6 +1,5 @@
 from model.cnn_class_model import build_model
 import tensorflow as tf
-import os
 
 def make_or_restore_model(input_shape_3D):
     """
@@ -42,4 +41,22 @@ def make_or_restore_model(input_shape_3D):
 
 
 def save_model_checkpoint(tf_model, epoch):
-    ""
+    """
+    Save the model checkpoint.
+
+    Parameters:
+    - tf_model (tensorflow.keras.Model): The TensorFlow model to save.
+    - epoch (int): The epoch number to include in the checkpoint filename.
+
+    Returns:
+    None
+
+    This function saves the model checkpoint with the specified epoch number in the "./ckpt/" directory.
+
+    Example:
+    >>> save_model_checkpoint(my_model, epoch=5)
+    """
+
+    checkpoint_prefix = os.path.join("./ckpt/model-ckpt")
+    checkpoint = tf.train.Checkpoint(model=tf_model)
+    checkpoint.save(file_prefix=checkpoint_prefix + "-{}".format(epoch))
