@@ -1,5 +1,6 @@
 from model.cnn_class_model import build_model
 import tensorflow as tf
+import os
 
 def make_or_restore_model(input_shape_3D):
     """
