@@ -31,7 +31,7 @@ def predict_api(uploaded_image):
 
         predictions = model.predict(processed_image)
 
-        accuracy = str(np.max(predictions))
+        accuracy = str((np.max(predictions))*100)
         disease_type = leaf_class[np.argmax(predictions)]
 
         os.remove('temp_image.jpg')
