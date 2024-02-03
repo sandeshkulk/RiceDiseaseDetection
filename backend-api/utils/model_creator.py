@@ -36,31 +36,6 @@ def make_or_restore_model(input_shape_3D=(224, 224, 3)):
         return tf_model
     else: 
         print("====================================================================================================")
-        print("Creating a new model")
+        print("Error loading model from checkpoint!")
         print("====================================================================================================")
-        tf_model = build_model(input_shape_3D)
-        tf_model.summary()
-        print("====================================================================================================")
-        return tf_model
-
-
-def save_model_checkpoint(tf_model, epoch):
-    """
-    Save the model checkpoint.
-
-    Parameters:
-    - tf_model (tensorflow.keras.Model): The TensorFlow model to save.
-    - epoch (int): The epoch number to include in the checkpoint filename.
-
-    Returns:
-    None
-
-    This function saves the model checkpoint with the specified epoch number in the "./ckpt/" directory.
-
-    Example:
-    >>> save_model_checkpoint(my_model, epoch=5)
-    """
-
-    checkpoint_prefix = os.path.join("./ckpt/model-ckpt")
-    checkpoint = tf.train.Checkpoint(model=tf_model)
-    checkpoint.save(file_prefix=checkpoint_prefix + "-{}".format(epoch))
+        return FileNotFoundError("Model Not Found!")
