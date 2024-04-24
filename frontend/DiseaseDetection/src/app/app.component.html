@@ -1,0 +1,8 @@
+<div>Crop Disease Detection Model</div>
+<div>
+    <input type="file" id="fileInput" name="fileInput" accept="image/*" (change)="onUpload($event)"
+        [(ngModel)]="imageUploader" />
+</div>
+<div *ngIf="accuracy">Accuracy: {{accuracy}}</div>
+<div *ngIf="dName">Disease Name: {{dName}}</div>
+<div *ngIf="errorName">Error!! No Crop Detected</div>
